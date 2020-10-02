@@ -82,6 +82,7 @@
     <Compile Include="Aplicacion1.aspx.designer.cs">
       <DependentUpon>Aplicacion1.aspx</DependentUpon>
     </Compile>
+    <Compile Include="Clases\Conexion.cs" />
     <Compile Include="Ejercicio1.aspx.cs">
       <DependentUpon>Ejercicio1.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
