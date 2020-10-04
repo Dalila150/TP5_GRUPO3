@@ -29,5 +29,10 @@ namespace TP5_GRUPO3
 
 
         }
+
+        protected void grdProductos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdProductos.PageIndex = e.NewPageIndex;
+        }
     }
 }
