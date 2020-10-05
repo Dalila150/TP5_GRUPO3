@@ -13,5 +13,11 @@ namespace TP5_GRUPO3
         {
 
         }
+
+        protected void lbtEliminarProductos_Click(object sender, EventArgs e)
+        {
+            Session["tabla"] = null;
+            
+        }
     }
 }

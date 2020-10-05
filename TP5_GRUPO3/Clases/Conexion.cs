@@ -11,8 +11,8 @@ namespace TP5_GRUPO3.Clases
 {
     public class Conexion
     {
-        string ruta = "Data Source="+ Dns.GetHostName() +"\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
-        //string ruta = "Data Source=DESKTOP-AN768UP\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
+       // string ruta = "Data Source="+ Dns.GetHostName() +"\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
+        string ruta = "Data Source=SALGADO-PC;Initial Catalog=Neptuno;Integrated Security=True";
 
         public Conexion() 
         {

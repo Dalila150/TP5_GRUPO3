@@ -61,7 +61,7 @@
                 <tr>
                     <td class="auto-style7"></td>
                     <td class="auto-style8">
-                        <asp:HyperLink ID="HyperLink2" runat="server">Eliminar productos seleccionados</asp:HyperLink>
+                        <asp:LinkButton ID="lbtEliminarProductos" runat="server" OnClick="lbtEliminarProductos_Click">Eliminar productos seleccionados</asp:LinkButton>
                     </td>
                     <td class="auto-style8"></td>
                 </tr>

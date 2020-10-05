@@ -43,8 +43,10 @@
             </tr>
             <tr>
                 <td class="auto-style2">
-                    <asp:GridView ID="GridView1" runat="server">
+                    <asp:GridView ID="grdProductosElegidos" runat="server">
                     </asp:GridView>
+                    <br />
+                    <asp:Label ID="lblMensaje" runat="server"></asp:Label>
                 </td>
                 <td class="auto-style8"></td>
                 <td class="auto-style8"></td>

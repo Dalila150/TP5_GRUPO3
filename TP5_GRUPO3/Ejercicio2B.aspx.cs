@@ -4,6 +4,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using System.Data;
 
 namespace TP5_GRUPO3
 {
@@ -11,7 +12,15 @@ namespace TP5_GRUPO3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            if (Session["tabla"]!= null)
+            {
+                grdProductosElegidos.DataSource = (DataTable)Session["tabla"];
+                grdProductosElegidos.DataBind();
+            }
+            else
+            {
+                lblMensaje.Text = "No se seleccionaron productos";
+            }
         }
     }
 }
