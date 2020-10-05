@@ -22,17 +22,33 @@ namespace TP5_GRUPO3
 
             DataSet ds = new DataSet();
 
-            adap.Fill(ds, "tablaProductos");
-            grdProductos.DataSource = ds.Tables["tablaProductos"];
-            grdProductos.DataBind();
+            CargarGridView();
             
+        }
 
-
+        public void CargarGridView()
+        {
+            GestionProductos gPro = new GestionProductos();
+            grdProductos.DataSource = gPro.ObtenerTodosLosProductos();
+            grdProductos.DataBind();
         }
 
         protected void grdProductos_PageIndexChanging(object sender, GridViewPageEventArgs e)
         {
             grdProductos.PageIndex = e.NewPageIndex;
+        }
+
+
+        protected void grdProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
+        {
+            String idProducto = ((Label)grdProductos.Rows[e.RowIndex].FindControl("lbl_it_id")).Text;
+            Productos pro = new Productos();
+            pro.IdProducto = Convert.ToInt32(idProducto);
+
+            GestionProductos gPro = new GestionProductos();
+            gPro.EliminarProducto(pro);
+
+            CargarGridView();
         }
     }
 }

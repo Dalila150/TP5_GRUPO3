@@ -14,7 +14,7 @@ namespace TP5_GRUPO3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-            string consulta = "select IdProducto, NombreProducto, CantidadPorUnidad, PrecioUnidad from Productos";
+            string consulta = "select * from Productos";
             Conexion conectar = new Conexion();
 
             SqlDataAdapter adap = conectar.ejecutarConsultaAdapter(consulta);

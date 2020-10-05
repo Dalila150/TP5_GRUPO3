@@ -22,7 +22,7 @@ namespace TP5_GRUPO3.Clases
         }
         public DataTable ObtenerTodosLosProductos()
         {
-            return ObtenerTabla("Productos", "Select IdProducto,NombreProducto,IdProveedor,PrecioUnidad from Productos");
+            return ObtenerTabla("Productos", "Select * from Productos");
         }
 
         private void ArmarParametrosLibros(ref SqlCommand Comando, Productos Producto)
@@ -48,6 +48,28 @@ namespace TP5_GRUPO3.Clases
                 return true;
             else
                 return false;
+        }
+        private void ArarParametrosProductosEliminar (ref SqlCommand Comando, Productos Producto)
+        {
+            SqlParameter SqlParametros = new SqlParameter();
+            SqlParametros = Comando.Parameters.Add("@IdProducto", SqlDbType.Int);
+            SqlParametros.Value = Producto.IdProducto;
+        }
+
+        public bool EliminarProducto(Productos producto)
+        {
+            SqlCommand Comando = new SqlCommand();
+            ArarParametrosProductosEliminar(ref Comando, producto);
+            Conexion ad = new Conexion();
+            int filasEliminadas = ad.EjecutarProcedimientoAlmacenado(Comando, "spEliminarProducto");
+            if(filasEliminadas == 1){
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+            
         }
     }
 }

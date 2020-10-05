@@ -13,7 +13,7 @@ namespace TP5_GRUPO3.Clases
     {
 
 
-        string ruta = "Data Source=" + Dns.GetHostName() + "\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
+        string ruta = "Data Source=" + Dns.GetHostName() + "\\SQLEXPRESS;Initial Catalog=Neptuno;Persist Security Info=True;User ID = sa; Password=123456";
         //string ruta = "Data Source=DESKTOP-AN768UP\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
 
 
