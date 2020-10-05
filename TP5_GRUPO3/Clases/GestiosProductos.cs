@@ -12,7 +12,8 @@ namespace TP5_GRUPO3.Clases
         public GestionProductos()
         {
         }
-        private DataTable ObtenerTabla(string Nombre, string Sql)
+
+        private DataTable ObtenerTabla(String Nombre, String Sql)
         {
             DataSet ds = new DataSet();
             Conexion datos = new Conexion();
@@ -20,6 +21,7 @@ namespace TP5_GRUPO3.Clases
             adp.Fill(ds, Nombre);
             return ds.Tables[Nombre];
         }
+
         public DataTable ObtenerTodosLosProductos()
         {
             return ObtenerTabla("Productos", "Select * from Productos");
@@ -32,11 +34,10 @@ namespace TP5_GRUPO3.Clases
             sqlparametros.Value = Producto.IdProducto;
             sqlparametros = Comando.Parameters.Add("@NombreProducto", SqlDbType.NVarChar);
             sqlparametros.Value = Producto.NombreProducto;
-            sqlparametros = Comando.Parameters.Add("@IdProveedor", SqlDbType.Int);
-            sqlparametros.Value = Producto.IdProveedor;
+            sqlparametros = Comando.Parameters.Add("@CantidadPorUnidad", SqlDbType.NVarChar);
+            sqlparametros.Value = Producto.CantidadPorUnidad;
             sqlparametros = Comando.Parameters.Add("@PrecioUnidad", SqlDbType.Money);
             sqlparametros.Value = Producto.PrecioUnidad;
-
         }
         public bool ActualizarLibro(Productos Pro)
         {

@@ -9,17 +9,17 @@ namespace TP5_GRUPO3.Clases
     {
         private int i_IdProducto;
         private string s_NombreProducto;
-        private int i_IdProveedor;
         private decimal d_PrecioUnidad;
+        private string s_cantidadPorunidad;
 
         public Productos()
         {
         }
-        public Productos(int i_IdProducto, string s_NombreProducto, int i_IdProveedor, decimal d_PrecioUnidad)
+        public Productos(int i_IdProducto, string s_NombreProducto, string s_cantidaPorunidad, decimal d_PrecioUnidad)
         {
             this.i_IdProducto = i_IdProducto;
             this.s_NombreProducto = s_NombreProducto;
-            this.i_IdProveedor = i_IdProveedor;
+            this.s_cantidadPorunidad = s_cantidaPorunidad;
             this.d_PrecioUnidad = d_PrecioUnidad;
         }
 
@@ -33,15 +33,15 @@ namespace TP5_GRUPO3.Clases
             get { return s_NombreProducto; }
             set { s_NombreProducto = value; }
         }
-        public int IdProveedor
-        {
-            get { return i_IdProveedor; }
-            set { i_IdProveedor = value; }
-        }
         public decimal PrecioUnidad
         {
             get { return d_PrecioUnidad; }
             set { d_PrecioUnidad = value; }
+        }
+        public string CantidadPorUnidad 
+        {
+            get { return s_cantidadPorunidad; }
+            set { s_cantidadPorunidad = value; }
         }
     }
 }

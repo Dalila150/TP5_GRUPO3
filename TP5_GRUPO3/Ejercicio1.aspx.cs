@@ -14,16 +14,10 @@ namespace TP5_GRUPO3
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
-            string consulta = "select IdProducto, NombreProducto, CantidadPorUnidad, PrecioUnidad from Productos";
-            Conexion conectar = new Conexion();
-            
-            SqlDataAdapter adap = conectar.ejecutarConsultaAdapter(consulta);
-
-            DataSet ds = new DataSet();
-
-            CargarGridView();
-            
+            if (!IsPostBack)
+            {
+                CargarGridView();
+            }
         }
 
         public void CargarGridView()
@@ -32,12 +26,6 @@ namespace TP5_GRUPO3
             grdProductos.DataSource = gPro.ObtenerTodosLosProductos();
             grdProductos.DataBind();
         }
-
-        protected void grdProductos_PageIndexChanging(object sender, GridViewPageEventArgs e)
-        {
-            grdProductos.PageIndex = e.NewPageIndex;
-        }
-
 
         protected void grdProductos_RowDeleting(object sender, GridViewDeleteEventArgs e)
         {
@@ -48,6 +36,28 @@ namespace TP5_GRUPO3
             GestionProductos gPro = new GestionProductos();
             gPro.EliminarProducto(pro);
 
+            CargarGridView();
+        }
+
+        protected void grdProductos_RowEditing(object sender, GridViewEditEventArgs e)
+        {
+            grdProductos.EditIndex = e.NewEditIndex;
+            CargarGridView();
+        }
+
+        protected void grdProductos_RowCancelingEdit(object sender, GridViewCancelEditEventArgs e)
+        {
+            grdProductos.EditIndex = -1;
+            CargarGridView();
+        }
+
+        protected void grdProductos_RowUpdating(object sender, GridViewUpdateEventArgs e)
+        {
+        }
+
+        protected void grdProductos_PageIndexChanging(object sender, GridViewPageEventArgs e)
+        {
+            grdProductos.PageIndex = e.NewPageIndex;
             CargarGridView();
         }
     }

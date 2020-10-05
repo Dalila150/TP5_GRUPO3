@@ -11,11 +11,13 @@ namespace TP5_GRUPO3.Clases
 {
     public class Conexion
     {
-
-
-        string ruta = "Data Source=" + Dns.GetHostName() + "\\SQLEXPRESS;Initial Catalog=Neptuno;Persist Security Info=True;User ID = sa; Password=123456";
+        string ruta = "Data Source="+ Dns.GetHostName() +"\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
         //string ruta = "Data Source=DESKTOP-AN768UP\\SQLEXPRESS;Initial Catalog=Neptuno;Integrated Security=True";
 
+        public Conexion() 
+        {
+
+        }
 
         public int ejecutarConsulta(string consulta) //Insertar, eliminar, modificar
         {
@@ -47,33 +49,36 @@ namespace TP5_GRUPO3.Clases
                 cn.Open();
                 return cn;
             }
-            catch (Exception)
+            catch (Exception ex)
             {
                 return null;
             }
         }
         public SqlDataAdapter ejecutarConsultaAdapter(string consulta) //Select, devuelve un SqlDataAdapter
         {
-            SqlConnection conexion = new SqlConnection(ruta);
-            conexion.Open();
-
-            SqlDataAdapter adap = new SqlDataAdapter(consulta, conexion);
-
-            return adap;
-
+            SqlDataAdapter adap;
+            try
+            {
+                adap = new SqlDataAdapter(consulta, ObtenerConexion());
+                return adap;
+            }
+            catch (Exception ex) 
+            {
+                return null;
+            }
         }
 
-        public int EjecutarProcedimientoAlmacenado(SqlCommand Comando, string NombreSP)
+        public int EjecutarProcedimientoAlmacenado(SqlCommand Comando, String NombreSP)
         {
             int FilasCambiadas;
-            SqlConnection Conexcion = ObtenerConexion();
+            SqlConnection Conexion = ObtenerConexion();
             SqlCommand cmd = new SqlCommand();
             cmd = Comando;
-            cmd.Connection = Conexcion;
+            cmd.Connection = Conexion;
             cmd.CommandType = CommandType.StoredProcedure;
             cmd.CommandText = NombreSP;
             FilasCambiadas = cmd.ExecuteNonQuery();
-            Conexcion.Close();
+            Conexion.Close();
             return FilasCambiadas;
         }
 
