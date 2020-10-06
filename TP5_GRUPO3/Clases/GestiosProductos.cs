@@ -36,8 +36,9 @@ namespace TP5_GRUPO3.Clases
             sqlparametros.Value = Producto.NombreProducto;
             sqlparametros = Comando.Parameters.Add("@CantidadPorUnidad", SqlDbType.NVarChar);
             sqlparametros.Value = Producto.CantidadPorUnidad;
-            sqlparametros = Comando.Parameters.Add("@PrecioUnidad", SqlDbType.Money);
+            sqlparametros = Comando.Parameters.Add("@PrecioUnidad", SqlDbType.Decimal);
             sqlparametros.Value = Producto.PrecioUnidad;
+            
         }
         public bool ActualizarLibro(Productos Pro)
         {
