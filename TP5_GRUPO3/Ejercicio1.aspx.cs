@@ -53,6 +53,25 @@ namespace TP5_GRUPO3
 
         protected void grdProductos_RowUpdating(object sender, GridViewUpdateEventArgs e)
         {
+            //SE BUSCAN LOS DATOS DEL !!!EDIT!!! ITEM TEMPLATE (NO DEL SELECT)
+
+            string s_IdProducto = ((Label)grdProductos.Rows[e.RowIndex].FindControl("llb_eit_IdProducto")).Text;
+            string s_NombreProducto = ((TextBox)grdProductos.Rows[e.RowIndex].FindControl("txt_eit_NombrePro")).Text;
+            string s_cantidadPorunidad = ((TextBox)grdProductos.Rows[e.RowIndex].FindControl("txt_eit_CantXUnidad")).Text;
+            string s_PrecioU = ((TextBox)grdProductos.Rows[e.RowIndex].FindControl("txt_eit_PrecioUnidad")).Text;
+
+            Productos prod = new Productos();
+            prod.IdProducto = Convert.ToInt32(s_IdProducto);
+            prod.NombreProducto = s_NombreProducto;
+            prod.CantidadPorUnidad = s_cantidadPorunidad;
+            prod.PrecioUnidad = Convert.ToDecimal(s_PrecioU);
+
+            GestionProductos gprod = new GestionProductos();
+            gprod.ActualizarLibro(prod);
+
+            grdProductos.EditIndex = -1;
+            CargarGridView();
+
         }
 
         protected void grdProductos_PageIndexChanging(object sender, GridViewPageEventArgs e)
